@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="card shadow-lg" style="max-width: 400px; width: 100%; padding: 20px;">
+        <div class="cartoon mb-3 text-center">
+            <img src="https://i.ibb.co.com/98gpLCQ/l1.png" alt="Animation 1" id="animation1" #animation1>
+            <img src="https://i.ibb.co.com/Vq5j4Vg/l2.png" alt="Animation 2" id="animation2" #animation2
+                style="display: none;">
+            <img src="https://i.ibb.co.com/Y0jsj90/l3.png" alt="Animation 3" id="animation3" #animation3
+                style="display: none;">
+        </div>
+        <form>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" id="email" class="form-control" placeholder="example@gmail.com" required
+                    (focus)="onEmailFocus()" (blur)="onBlur()">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter your password" required
+                    (focus)="onPasswordFocus()" (blur)="onBlur()">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+</div>
