@@ -10,15 +10,15 @@
         <form>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" id="email" class="form-control" placeholder="example@gmail.com" required
+                <input type="text" id="email" class="form-control" placeholder="example@gmail.com" 
                     (focus)="onEmailFocus()" (blur)="onBlur()">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" class="form-control" placeholder="Enter your password" required
+                <input type="password" id="password" class="form-control" placeholder="Enter your password" 
                     (focus)="onPasswordFocus()" (blur)="onBlur()">
             </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <button type="submit" class="btn btn-primary w-100" (click)="NavigateSidenavar()">Login</button>
         </form>
     </div>
 </div>

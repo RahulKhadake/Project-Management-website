@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-
+router=inject(Router);
 
   @ViewChild('animation1', { static: true }) animation1!: ElementRef;
   @ViewChild('animation2', { static: true }) animation2!: ElementRef;
@@ -34,5 +35,10 @@ export class LoginComponent {
 
   onBlur() {
     this.showAnimation1();
+  }
+
+  NavigateSidenavar()
+  {
+    this.router.navigateByUrl("dashboard");
   }
 }
