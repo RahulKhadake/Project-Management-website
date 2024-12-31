@@ -7,18 +7,19 @@
             <img src="https://i.ibb.co.com/Y0jsj90/l3.png" alt="Animation 3" id="animation3" #animation3
                 style="display: none;">
         </div>
-        <form>
+        
             <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" id="email" class="form-control" placeholder="example@gmail.com" 
-                    (focus)="onEmailFocus()" (blur)="onBlur()">
+                <label for="username" class="form-label">User Name</label>
+                <input type="text"   [(ngModel)]="userLogin.userName"
+                 id="email" class="form-control" placeholder="example@gmail.com" 
+                    (focus)="onEmailFocus()" (blur)="onBlur()" >
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" id="password" class="form-control" placeholder="Enter your password" 
-                    (focus)="onPasswordFocus()" (blur)="onBlur()">
+                    (focus)="onPasswordFocus()" (blur)="onBlur()" [(ngModel)]="userLogin.password">
             </div>
             <button type="submit" class="btn btn-primary w-100" (click)="NavigateSidenavar()">Login</button>
-        </form>
+       
     </div>
 </div>

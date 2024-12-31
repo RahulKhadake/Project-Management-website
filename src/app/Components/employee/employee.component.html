@@ -6,7 +6,7 @@
           <h5>Employee List</h5>
         </div>
         <div class="col-md-2 text-end">
-          <button class="btn btn-light">Add Employee</button>
+          <button class="btn btn-light" routerLink="/Add-edit-viwe">Add Employee</button>
         </div>
       </div>
     </div>
@@ -15,28 +15,31 @@
         <table class="table table-bordered table-striped">
           <thead class="table-success">
             <tr>
-              <th>#</th>
+              <th>ID</th>
               <th>Emp Name</th>
-              <th>Mobile</th>
-              <th>Role</th>
               <th>Emp ID</th>
-              <th>Email ID</th>
-              <th>Emp Designation</th>
-              <th>Emp Code</th>
-              <th>Action</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Gender</th>
+              <th>Deprament ID</th>
+                <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            @for (item of emdData; track $index) {
+            @for (item of EmployeeList; track $index) {
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ item.empName }}</td>
-                    <td>{{ item.mobile }}</td>
+                   
+                    <td>{{ item.employeeName}}</td>
+                    <td>{{ item.employeeId}}</td>
+                    <td>{{ item.contactNo }}</td>
+                    <td>{{ item.emailId }}</td>
                     <td>{{ item.role }}</td>
-                    <td>{{ item.empId }}</td>
-                    <td>{{ item.empEmailId }}</td>
-                    <td>{{ item.empDesignation }}</td>
-                    <td>{{ item.empCode }}</td>
+                    <td>{{ item.gender}}</td>
+                    <td>{{item.deptId}}</td>
+                   
+                    
                     <td>
                         <div class="d-flex g-5">
                             <button class="btn btn-success"><i class="bi bi-eye-fill"></i></button>

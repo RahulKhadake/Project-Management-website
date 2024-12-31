@@ -1,0 +1,97 @@
+<div class="card">
+    <div class="card-header bg-success text-white text-center">
+        <h5>Add Employee Details</h5>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="employeeForm">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Employee Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter employee name"
+                            required formControlName="empName">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number"
+                            required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email ID</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="Enter email address" required>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter password" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group mb-3">
+                        <label for="parentDepartment" class="form-label">Parent Department</label>
+                        <select class="form-select" id="parentDepartment" aria-label="Parent Department">
+                            <option selected>Select Parent Department</option>
+                            <option value="1">HR</option>
+                            <option value="2">Finance</option>
+                            <option value="3">Engineering</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group mb-3">
+                        <label for="childDepartment" class="form-label">Child Department</label>
+                        <select class="form-select" id="childDepartment" aria-label="Child Department">
+                            <option selected>Select Child Department</option>
+                            <option value="1">Recruitment</option>
+                            <option value="2">Payroll</option>
+                            <option value="3">Development</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Select Gender</label>
+                        <div class="d-flex align-items-center">
+                            <div class="form-check me-3">
+                                <input class="form-check-input custom-radio" type="radio" name="gender" id="male"
+                                    value="Male">
+                                <label class="form-check-label" for="male">Male</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input custom-radio" type="radio" name="gender" id="female"
+                                    value="Female">
+                                <label class="form-check-label" for="female">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success" (click)="Savedata()">Submit</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>

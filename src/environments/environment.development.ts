@@ -1,6 +1,6 @@
 export const environment = {
 
     production: false,
-    BASEAPI_URL: 'https://freeapi.miniprojectideas.com/api/EmployeeApp/'
+    BASEAPI_URL:'https:projectapi.gerasim.in/api/EmployeeManagement' 
 }
 

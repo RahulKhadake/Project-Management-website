@@ -15,5 +15,7 @@ export class EmployeeService {
   getEmployee(): Observable<any> {
     return this.http.get(`${this.apiUrl}/${EMPLOYEE_CONSTANTS.GET_ALL_EMPLOYEE}`);
   }
-  
+  CreateEmployee(data:any):Observable<any>{
+    return this.http.post(`${this.apiUrl}/${EMPLOYEE_CONSTANTS.CREATE_EMPLOYEE}`,data);
+  }
 }

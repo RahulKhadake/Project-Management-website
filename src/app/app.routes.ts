@@ -6,6 +6,7 @@ import { EmployeeComponent } from './Components/employee/employee.component';
 import { LayoutComponent } from './Components/layout/layout.component';
 import { DashbordComponent } from './Components/dashbord/dashbord.component';
 import { ProjectComponent } from './Components/project/project.component';
+import { AddEditViewComponent } from './Components/add-edit-view/add-edit-view.component';
 
 export const routes: Routes = [
     {
@@ -26,6 +27,10 @@ export const routes: Routes = [
             },
             {
                 path: 'Project', component: ProjectComponent
+            },
+            
+            {
+                path: 'Add-edit-viwe', component: AddEditViewComponent
             },
 
 

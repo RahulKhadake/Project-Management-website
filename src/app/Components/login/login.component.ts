@@ -1,15 +1,24 @@
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IUserLogin } from '../../core/model/login.model';
+import { LoginService } from '../../core/Services/login.service';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-router=inject(Router);
+  router = inject(Router);
+  constructor(private loginservice: LoginService) { }
+  userLogin: IUserLogin = {
+    userName: '',
+    password: ''
+  };
 
   @ViewChild('animation1', { static: true }) animation1!: ElementRef;
   @ViewChild('animation2', { static: true }) animation2!: ElementRef;
@@ -37,8 +46,27 @@ router=inject(Router);
     this.showAnimation1();
   }
 
-  NavigateSidenavar()
-  {
-    this.router.navigateByUrl("dashboard");
+  NavigateSidenavar() {
+    this.loginservice.login(this.userLogin).subscribe(
+      (res: any) => {
+        if (res.result) {
+
+          localStorage.setItem('EmployeeAppUser', JSON.stringify(res.data));
+          console.log(res.data, "Data Checking here");
+          console.log(res.result, "Checking here");
+          alert("Login Successful");
+
+          this.router.navigateByUrl("/dashboard");
+        } else {
+          alert("Invalid Credentials");
+        }
+      },
+      (error) => {
+
+        console.error("Login failed:", error);
+        alert("An error occurred while logging in. Please try again later.");
+      }
+    );
   }
+
 }
