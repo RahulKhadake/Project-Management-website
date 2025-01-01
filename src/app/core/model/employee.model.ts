@@ -18,7 +18,7 @@ export class Employee {
       this.deptId=0;
       this.password='';
       this.gender='';
-      this.role='';
+      this.role='Employee';
       this.createdDate=new Date();
     }
   }
