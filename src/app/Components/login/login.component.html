@@ -14,11 +14,24 @@
                  id="email" class="form-control" placeholder="example@gmail.com" 
                     (focus)="onEmailFocus()" (blur)="onBlur()" >
             </div>
-            <div class="mb-3">
+           
+            <div class="mb-3 position-relative">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" class="form-control" placeholder="Enter your password" 
-                    (focus)="onPasswordFocus()" (blur)="onBlur()" [(ngModel)]="userLogin.password">
+                <div class="input-group">
+                    <input  (focus)="onPasswordFocus()" (blur)="onBlur()"
+                        [type]="showPassword ? 'text' : 'password'" 
+                        id="password" 
+                        class="form-control" 
+                        placeholder="Enter your password" 
+                        [(ngModel)]="userLogin.password"
+                    >
+                    <span class="input-group-text cursor-pointer" (click)="togglePasswordVisibility()">
+                        <i [class]="showPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
+                    </span>
+                </div>
             </div>
+            
+
             <button type="submit" class="btn btn-primary w-100" (click)="NavigateSidenavar()">Login</button>
        
     </div>
