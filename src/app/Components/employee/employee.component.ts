@@ -47,6 +47,7 @@ export class EmployeeComponent {
   }
 
   DeleteEmpdata(id:number){
+    localStorage.removeItem('selectedEmployee');
     let conframdaata=confirm("Are you sure you want to delete this employee?");
     if(conframdaata)
     {
@@ -69,13 +70,16 @@ export class EmployeeComponent {
   EditData(item: any) {
     // Using Angular Router with Query Parameters passing the data
     console.log('Editing Employee:', item);
+    localStorage.removeItem('selectedEmployee');
     this.router.navigate(['/Add-edit-viwe'], { queryParams: { data: JSON.stringify(item) } });
 }
-ViewData()
-{
+
+ViewData(ViewemployeeData: any): void {
+  // Save employee data to local storage
+  localStorage.setItem('selectedEmployee', JSON.stringify(ViewemployeeData));
+  // Navigate to the view page
   this.router.navigate(['/Add-edit-viwe']);
 }
- 
   
   
 }

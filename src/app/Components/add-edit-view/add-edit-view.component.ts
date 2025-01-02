@@ -23,9 +23,23 @@ export class AddEditViewComponent {
   constructor(private parentservice: ParentandchildService, private Childservice: ParentandchildService,
     private router: ActivatedRoute
   ) { }
-  isEditMode: boolean = false; // Flag to determine Add or Update
+  isEditMode: boolean = false; 
+  ViewemployeeData:any;// Flag to determine Add or Update
   ngOnInit() {
     this.getParentDeperamentData();
+
+     // Retrieve the employee data from local storage
+     const data = localStorage.getItem('selectedEmployee');
+     if (data) {
+       this.ViewemployeeData = JSON.parse(data);
+     } else {
+       console.error('No employee data found in local storage');
+     }
+    
+    
+
+
+
 
     this.router.queryParams.subscribe(params => {
       const data = params['data'];
@@ -114,5 +128,14 @@ export class AddEditViewComponent {
         },
       })
     }
+  }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('selectedEmployee');
+  }
+
+  closeView(){
+    this.route.navigateByUrl('/Employee');
+    localStorage.removeItem('selectedEmployee');
   }
 }

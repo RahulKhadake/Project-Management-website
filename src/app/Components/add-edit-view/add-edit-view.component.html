@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="!ViewemployeeData">
     <div class="card-header bg-success text-white text-center">
         <!-- <h5>Add Employee Details</h5> -->
         <h5>{{ isEditMode ? 'Edit Employee Details' : 'Add Employee Details' }}</h5>
@@ -106,3 +106,61 @@
 </div>
 
 
+<!--  view Employee  -->
+
+
+
+<div *ngIf="ViewemployeeData" class="card mx-auto " style=" box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+    <div class="card-header bg-primary text-white text-center">
+        <h4> View Employee Details</h4>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="employeeName" class="form-label"><strong>Name</strong></label>
+                    <input type="text" id="employeeName" class="form-control" [value]="ViewemployeeData.employeeName" readonly>
+                </div>
+                <div class="col-6">
+                    <label for="employeeId" class="form-label"><strong>Employee ID</strong></label>
+                    <input type="text" id="employeeId" class="form-control" [value]="ViewemployeeData.employeeId" readonly>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="contactNo" class="form-label"><strong>Contact Number</strong></label>
+                    <input type="text" id="contactNo" class="form-control" [value]="ViewemployeeData.contactNo" readonly>
+                </div>
+                <div class="col-6">
+                    <label for="emailId" class="form-label"><strong>Email</strong></label>
+                    <input type="email" id="emailId" class="form-control" [value]="ViewemployeeData.emailId" readonly>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="role" class="form-label"><strong>Role</strong></label>
+                    <input type="text" id="role" class="form-control" [value]="ViewemployeeData.role" readonly>
+                </div>
+                <div class="col-6">
+                    <label for="gender" class="form-label"><strong>Gender</strong></label>
+                    <input type="text" id="gender" class="form-control" [value]="ViewemployeeData.gender" readonly>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="deptId" class="form-label"><strong>Department</strong></label>
+                    <input type="text" id="deptId" class="form-control" [value]="ViewemployeeData.deptId" readonly>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer text-center">
+        <button class="btn btn-secondary w-50" (click)="closeView()">Close</button>
+    </div>
+</div>
+
+
+  
