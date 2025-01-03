@@ -28,7 +28,7 @@
                     <div class="form-group mb-3">
                         <label for="deptID" class="form-label">Parent Department</label>
                         <select class="form-select" id="deptId" aria-label="Parent Department" [(ngModel)]="deptId" name="deptId" (change)="onDeperentChange()">
-                            <option value="" selected disabled>Select Parent Department</option>
+                            <option value=""disabled>Select Parent Department</option>
                             <option *ngFor="let department of parentdeperentList" [value]="department.departmentId">
                                 {{ department.departmentName }}
                             </option>
@@ -40,7 +40,7 @@
                     <div class="form-group mb-3">
                         <label for="childDepartment" class="form-label">Child Department</label>
                         <select class="form-select" id="childDepartment" aria-label="Child Department" [(ngModel)]="empObj.deptId" name="deptId">
-                            <option selected disabled>Select Child Department</option>
+                            <option value="" disabled>Select Child Department</option>
                             <option *ngFor="let item of childdeperntList" [value]="item.childDeptId">
                                 {{ item.departmentName }}
                               </option>
