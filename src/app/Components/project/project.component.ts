@@ -1,15 +1,17 @@
 import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectService } from '../../core/Services/project.service';
 import { async, Observable } from 'rxjs';
 import { Employee } from '../../core/model/employee.model';
 import { IProject } from '../../core/model/project.model';
+import { CREATEEMPPROJECT, ICREATEUSERDE } from '../../core/model/createEmpProject.model';
+import { GetprojectEmployeeService } from '../../core/Services/getproject-employee.service';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, NgFor, AsyncPipe, DatePipe],
+  imports: [NgIf, ReactiveFormsModule, NgFor, AsyncPipe, DatePipe,FormsModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
@@ -17,12 +19,15 @@ export class ProjectComponent {
 
   currentViwe: string = 'List';
   ProjectDataList: IProject[] = [];
+  projectEmployeeList:ICREATEUSERDE[]=[]
   EmployeeData$: Observable<Employee[]> = new Observable<Employee[]>();
   EmployeeForm: FormGroup = new FormGroup({});
 
+   @ViewChild ("empModel") EmployeeprojectAdd:ElementRef| undefined
 
+   newEmpProject:CREATEEMPPROJECT= new CREATEEMPPROJECT();
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService,private getProjectEmpService:GetprojectEmployeeService) {
     this.initilizationsFroms();
   }
   ngOnInit(): void {
@@ -144,5 +149,56 @@ export class ProjectComponent {
     }
 
   }
-  
+  OpenModelAddEmployee(id:number){
+    debugger
+    this.getAllprojectEmployees(id);
+   this.newEmpProject.projectId = id;
+    if(this.EmployeeprojectAdd)
+    {
+      this.EmployeeprojectAdd.nativeElement.style.display = "block";
+    }
+  }
+  CloseModel(){
+    if(this.EmployeeprojectAdd)
+      {
+        this.EmployeeprojectAdd.nativeElement.style.display = "none";
+      }
+  }
+  onAddEmp(id:number){
+   
+     
+      
+    this.getProjectEmpService.addNewProjectEmployee(this.newEmpProject).subscribe({
+      next:(res:any)=> {
+        console.log("Employee Added to Project ",res);
+        alert("Employee Added to Project");
+        this.getAllprojectEmployees(this.newEmpProject.projectId);
+        
+      },
+      error:(err:any) =>{
+        console.log(err,"Something error is there");
+      },
+      complete() {
+        
+      },
+    })
+  }
+  getAllprojectEmployees(id:number){
+   
+    this.getProjectEmpService.getProjectEmployeeByDI().subscribe({
+      next:(res:any) =>{
+          console.log(res,"Checkking the responsive");
+          
+          const record=res.filter((m: { projectId: number; })=> m.projectId == id);
+          this.projectEmployeeList=record;
+          
+      },
+      error:(err:any)=> {
+        console.log(err,"Checking the error");
+      },
+      complete() {
+        console.log("Completed");
+      },
+    })
+  }
 }
