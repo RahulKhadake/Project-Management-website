@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="mt-2 p-3 bg-primary text-white rounded text-center">
-        <h5>Single With Multiple Entity</h5>
+        <h5>Single With Multiple Entity Using ReactForms</h5>
         <h5>Employee With Multple Family Relative Scenario </h5>
     </div>
     <div class="row pt-2">
@@ -104,6 +104,10 @@
                                             <label><b>Age</b></label>
                                             <input formControlName="Age" type="text" placeholder="Age" class="form-control"  />
                                         </div> 
+                                        <div class="col-2 text-end mt-4">
+                                            <button class="btn btn-sm btn-danger" (click)="deleteFamilyForm($index)">Delete</button>
+                                        </div>
+                                        
                                     </div>
                                 }
                                
@@ -111,6 +115,7 @@
                                     <div class="col-1 mt-4 text-end">
                                         <button class="btn btn-sm bg-primary" (click)="createFamilyForm()">Add</button>
                                     </div>
+                                    
                                 </div>
                                 
                             </div>

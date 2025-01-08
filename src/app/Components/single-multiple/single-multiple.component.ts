@@ -61,5 +61,7 @@ export class SingleMultipleComponent {
     const formValue = this.employeeForm.value;
     debugger;
   }
-
+  deleteFamilyForm(index: number): void {
+    this.familyRelative.removeAt(index);
+  }
 }
