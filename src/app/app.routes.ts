@@ -7,6 +7,7 @@ import { LayoutComponent } from './Components/layout/layout.component';
 import { DashbordComponent } from './Components/dashbord/dashbord.component';
 import { ProjectComponent } from './Components/project/project.component';
 import { AddEditViewComponent } from './Components/add-edit-view/add-edit-view.component';
+import { SingleMultipleComponent } from './Components/single-multiple/single-multiple.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,9 @@ export const routes: Routes = [
             
             {
                 path: 'Add-edit-viwe', component: AddEditViewComponent
+            },
+            {
+                path: 'singlewithmultiple', component: SingleMultipleComponent
             },
 
 

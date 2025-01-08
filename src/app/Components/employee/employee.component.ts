@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { EmployeeService } from '../../core/Services/employee.service';
 import { Employee } from '../../core/model/employee.model';
-import { NgxSpinnerService } from "ngx-spinner";
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 

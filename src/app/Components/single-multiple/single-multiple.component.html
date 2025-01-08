@@ -1,0 +1,125 @@
+<div class="container-fluid">
+    <div class="mt-2 p-3 bg-primary text-white rounded text-center">
+        <h5>Single With Multiple Entity</h5>
+        <h5>Employee With Multple Family Relative Scenario </h5>
+    </div>
+    <div class="row pt-2">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <div class="row">
+                        <div class="col-6"> New Employee</div>
+                        <div class="col-6 text-end">
+                            <button class='btn btn-sm btn-primary'>List</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="employeeForm">
+                        <div class="row">
+                            <div class="col-7">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label><b>Name</b></label>
+                                        <input type="text"  class="form-control" formControlName="Name" placeholder="Enter Name" />
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label><b>Contact No</b></label>
+                                        <input type="text" class="form-control" formControlName="ContactNo" placeholder="Enter Contact No" />
+                                    </div>
+                                    <div class="col-4">
+                                        <label><b>Email</b></label>
+                                        <input type="text" class="form-control" formControlName="Email" placeholder="Enter Email" />
+                                    </div>
+                                    <div class="col-4">
+                                        <label><b>City</b></label>
+                                        <input type="text" class="form-control" formControlName="City" placeholder="Enter City" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label><b>State</b></label>
+                                        <input type="text" class="form-control" formControlName="State" placeholder="Enter State" />
+                                    </div>
+                                    <div class="col-4">
+                                        <label><b>Pincode</b></label>
+                                        <input type="text" class="form-control" formControlName="PinCode" placeholder="Enter Pincode" />
+                                    </div>
+                                    <div class="col-4">
+                                        <label><b>Dasignation</b></label>
+                                        <select class="form-control" formControlName="Designation">
+                                            <option value="">Select</option>
+                                            <option value="Jr Developer">Jr Developer</option>
+                                            <option value="Sr Developer">Sr Developer</option>
+                                            <option value="Team Leader">Team Leader</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-6 text-end">
+                                        <button class="btn text-white btn-sm bg-secondary">Reset</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button (click)="onSave()" class="btn text-white btn-sm bg-success">
+                                            Save Employee
+                                        </button>
+
+                                        <button class="btn btn-sm bg-secondary">
+                                            Update Employee
+                                        </button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5" formArrayName="MockEmpRelatives" >
+                                @for (item of familyRelative.controls; track $index) {
+                                    <div class="row"  [formGroupName]="$index">
+                                        <div class="col-4">
+                                            <label><b>Name</b></label>
+                                            <input type="text" formControlName="Name" placeholder="Relative Name" class="form-control"  />
+                                            @if(item.get('Name')?.touched) {
+                                                <div class="text-danger"> 
+                                                    @if(item.get('Name')?.errors?.['required']){
+                                                        <span>This is Required</span>
+                                                    }   
+                                                </div>
+                                            }
+      
+                                        </div>
+                                        <div class="col-3">
+                                            <label><b>Relation</b></label>
+                                            <select formControlName="Relation" class="form-control" >
+                                                <option value="">Select</option>
+                                                <option value="Mother">Mother</option>
+                                                <option value="Father">Father</option>
+                                                <option value="Sister">Sister</option>
+                                                <option value="Brother">Brother</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <label><b>Age</b></label>
+                                            <input formControlName="Age" type="text" placeholder="Age" class="form-control"  />
+                                        </div> 
+                                    </div>
+                                }
+                               
+                                <div class="row">
+                                    <div class="col-1 mt-4 text-end">
+                                        <button class="btn btn-sm bg-primary" (click)="createFamilyForm()">Add</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
