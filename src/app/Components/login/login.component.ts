@@ -59,6 +59,7 @@ export class LoginComponent {
           this.router.navigateByUrl("/dashboard");
         } else {
           alert("Invalid Credentials");
+          this.router.navigateByUrl("/dashboard");
         }
       },
       (error) => {
